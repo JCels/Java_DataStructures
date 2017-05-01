@@ -1,0 +1,45 @@
+package Arrays;
+
+public class TestBinarySearch {
+
+	public static void main(String[] args) {
+		
+		int[] testA = {1,2,3,4,5};
+		System.out.println(binarySearch(4, testA)); //3
+		
+		int[] testB = {1,2,3,4,5,10,11,14,15};
+		System.out.println(binarySearch(13, testB)); //-1
+		
+		int[] testC = {};
+		System.out.println(binarySearch(3, testC)); //-1
+		
+		int[] testD = {1,2};
+		System.out.println(binarySearch(13, testD)); //-1
+		
+		int[] testE = {1,2,3,4,5};
+		System.out.println(binarySearch(5, testA)); //4
+
+	}
+	
+	public static int binarySearch(int s, int[] array){
+		if(array.length > 0){
+			int len = array.length;
+			int low = 0;
+			int high = array.length;
+			
+			while(low < high){
+				int m = (low + high)/2;
+				if(array[m] == s){
+					return m;
+				} else if(array[m] < s){
+					low = m + 1; //shift the new lower bound to m+1
+				}else{
+					high = m; // shift the new upper bound to m 
+				}
+			}					
+		} 
+
+		return -1;
+	}
+
+}
